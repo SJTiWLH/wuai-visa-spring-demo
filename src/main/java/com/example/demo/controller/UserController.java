@@ -1,5 +1,5 @@
 package com.example.demo.controller;
-
+import com.example.demo.pojo.TbTodolist;
 import com.example.demo.pojo.TbUser;
 import com.example.demo.service.UserService;
 import com.example.demo.service.impl.UserServiceImpl;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user")  // 11
 public class UserController {
 
     @Autowired
@@ -18,7 +18,6 @@ public class UserController {
     public Result<?> getUser(@RequestBody TbUser user) {
         System.out.println("user = " + user);
         boolean save = userService.save(user);
-
         if (save)
             return Result.ok();
         return Result.fail();
@@ -35,5 +34,14 @@ public class UserController {
         userService.removeById(id);
         return Result.ok();
     }
+
+//    /**
+//     * todolist的方法
+//     */
+//    @PostMapping("/addlist")
+//    public Result<?> addUserList(@RequestBody TbTodolist List) {
+//        System.out.println("list = " + List);
+//        return Result.ok();
+//    }
 
 }
